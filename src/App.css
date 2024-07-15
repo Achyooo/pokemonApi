@@ -1,0 +1,172 @@
+/* Header */
+.headerContainer{
+  height: 50px;
+  background-color: #000;
+  display: flex;
+}
+
+ .logoPlace{
+  position: relative;
+    img{
+      position: absolute;
+      width: 50px;
+    }
+    span{
+      position: absolute;
+      z-index: 10;
+      top: 8px;
+      left: 30px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-shadow: -2px 0px #fff, 0px 2px #fff, 2px 0px  #fff, 0px -2px  #fff;
+      white-space: nowrap;
+      text-decoration: none;
+      color: #dd0000;
+    }
+  }
+
+
+
+
+/* Pokedex */
+
+
+/* 세대 버튼 */
+.genBtn{
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+  text-align: center;
+  margin: 50px 0px;
+  flex-wrap: wrap;
+  .oneBtn{
+    cursor: pointer;
+    p{
+      color: #aaa;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      padding: 8px;
+      margin: 10px 20px;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+      word-break: keep-all;
+      width: 60px;
+    }
+    p:hover{
+      color: #000;
+      border: 1px solid #888;
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.45);
+    }
+  }
+}
+
+  
+
+/* 데이터 */
+
+.pokedexContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0px;
+  border-top: 1px solid #ccc;
+}
+
+  .pokemon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 180px;
+    height: 180px;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 0px;
+    color: #000;
+  }
+  .pokemon:hover {
+    background-color: #fafafa;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    img{
+      animation: hop_image 0.5s linear infinite;
+    }
+  }
+  @keyframes hop_image{
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+
+
+  /* 로딩 */
+  @keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+  .loading {
+    margin: 200px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 30px;
+      height: 30px;
+      margin: 20px;
+      animation: rotate_image 1s ease-in-out infinite;
+      transform-origin: 50% 50%;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+
+
+
+  /* PokeDetail */
+
+  .pokedexBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    .official-art{
+      width: 350px;
+      height: 350px;
+    }
+    .shiny-btn{
+      color: #aaa;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      padding: 8px 10px;
+      margin: 10px 20px;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+      word-break: keep-all;
+      font-size: 0.9rem;
+    }
+    .shiny-btn:hover{
+      cursor: pointer;
+      color: #000;
+      border: 1px solid #888;
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.45);
+    }
+  }

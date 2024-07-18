@@ -9,10 +9,9 @@ import { Link } from 'react-router-dom';
 
 import pokeballImg from './img/pokeball.webp';
 
-import "./css/pokedex.css";
+import "./css/header.css";
 
 
-// 커밋 테스트
 
 const Header = () => {
 

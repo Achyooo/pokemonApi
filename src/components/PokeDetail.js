@@ -10,7 +10,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import pokeballDotImg from './img/pokeball_dot.webp';
 
-import "./css/pokedex.css";
+import "./css/pokeDetail.css";
 
 
 
@@ -21,7 +21,7 @@ const PokeDetail = () => {
     const [ loading, setLoading ] = useState(false); // 로딩 상태 추가
 
     const [ isShiny, setIsShiny ] = useState(false);
-    const [ isDreamAbility, setIsDreamAbility ] = useState(false);
+
 
 
 
@@ -96,7 +96,7 @@ const PokeDetail = () => {
 
 
     const onClickShiny = () => {
-        setIsShiny((prev)=>(!prev))
+        setIsShiny((prev)=>(!prev));
     }
 
 
@@ -104,6 +104,9 @@ const PokeDetail = () => {
         navigate(`/?gen=${gen}`);
     }
 
+    
+    const hiddenAbility = pokemonData.abilities.find(a => a.is_hidden);
+    // console.log(hiddenAbility);
 
 
     return (
@@ -111,7 +114,7 @@ const PokeDetail = () => {
             <Header/>
 
 
-            <div className='pokedexContainer'>
+            <div className='pokeDetailContainer'>
                 {loading ? 
                     (<div className='loading'>
                         <img src={pokeballDotImg}></img>
@@ -119,7 +122,8 @@ const PokeDetail = () => {
                         <img src={pokeballDotImg}></img>
                     </div>)
                     :
-                    (<div className='pokedexBody'>
+                    (<div className='pokeDetailBody'>
+                        <p className='pokemon-num'>No.{pokemonData.id}</p>
                         <h1>{pokemonData.korean_name}</h1>
                         
                         <button className="shiny-btn"
@@ -133,35 +137,43 @@ const PokeDetail = () => {
                         <img className='pokemon-dot'
                              src={isShiny ? pokemonData.sprites.front_shiny : pokemonData.sprites.front_default}
                              alt={pokemonData.korean_name} />
+
                         
-                        <div>타입: {pokemonData.types.map((t, idx)=>(
-                            <span key={idx}>{t.korean_name}{idx < pokemonData.types.length-1 ? ', ' : ''}</span>))}
-                        </div>
+                        {/* 포켓몬 정보 (타입, 특성, 숨특) */}
+                        <div className='info'>
 
-                        <div>특성: {pokemonData.abilities
-                                               .filter((a) => !a.is_hidden)
-                                               .map((a, idx)=>(
-                                                <span key={idx}>
-                                                    {a.korean_name}
-                                                    {idx < pokemonData.abilities.filter((a) => !a.is_hidden).length-1 ? ', ' : ''}
-                                                </span>
-                                                ))
+                            <div className='oneLine'>
+                                <span className='sub-title'>타입</span>
+                                {pokemonData.types.map(t => t.korean_name).join(' / ')}
+                            </div>
+
+                            <div className='oneLine'>
+                                <span className='sub-title'>특성</span>
+                                    {pokemonData.abilities
+                                                .filter((a) => !a.is_hidden)
+                                                .map((a) => a.korean_name)
+                                                .join(' / ')
                                     }
+                            </div>
+
+                            {/* 숨특은 무조건 하나 */}
+                            <div className='oneLine'>
+                                <span className='sub-title'>숨겨진 특성</span>
+                                    {hiddenAbility ? 
+                                        <span>{hiddenAbility.korean_name}</span>
+                                        :
+                                        <span>X</span>
+                                    }          
+                            </div>
+
                         </div>
 
-                        {/* 숨특은 무조건 하나 */}
-                        <div>숨겨진 특성: {pokemonData.abilities
-                                               .filter((a) => a.is_hidden)
-                                               .map((a, idx)=>(
-                                                <span key={idx}>
-                                                    {a.korean_name}
-                                                </span>
-                                                ))
-                                         }
+
+                        <div className='backBtnContainer'>
+                            <button className='backBtn'
+                                    onClick={onClickBack}>목록으로</button>
                         </div>
-
-                        <button onClick={onClickBack}>뒤로가기</button>
-
+                       
                     </div>)
                 }
             </div>

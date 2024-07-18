@@ -192,7 +192,8 @@ const Pokedex = () => {
         </div>
 
 
-        {/* 데이터 */}
+
+        {/* 도감 데이터 */}
         <div className='pokedexContainer'>
 
             {loading ? 

@@ -1,36 +1,6 @@
-/* Header */
-.headerContainer{
-  height: 50px;
-  background-color: #000;
-  display: flex;
-}
-
- .logoPlace{
-  position: relative;
-    img{
-      position: absolute;
-      width: 50px;
-    }
-    span{
-      position: absolute;
-      z-index: 10;
-      top: 8px;
-      left: 30px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-shadow: -2px 0px #fff, 0px 2px #fff, 2px 0px  #fff, 0px -2px  #fff;
-      white-space: nowrap;
-      text-decoration: none;
-      color: #dd0000;
-    }
-  }
-
-
-
-
 /* Pokedex */
 
-/* 세대 버튼 */
+/* 세대 버튼 부분 */
 .genBtn{
   display: flex;
   /* justify-content: space-evenly; */
@@ -61,9 +31,7 @@
 }
 
   
-
-  /* 도감 부분 */
-
+/* 도감 데이터 부분 */
 .pokedexContainer {
   display: flex;
   justify-content: center;
@@ -132,9 +100,3 @@
       font-size: 1.5rem;
     }
   }
-
-
-
-
-  /* PokeDetail */
-

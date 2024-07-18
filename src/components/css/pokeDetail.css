@@ -1,0 +1,121 @@
+/* PokeDetail */
+
+
+/* 로딩 */
+@keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading {
+    margin: 200px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 30px;
+        height: 30px;
+        margin: 20px;
+        animation: rotate_image 1s ease-in-out infinite;
+        transform-origin: 50% 50%;
+    }
+    p {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+/* 디테일 바디 스타일 */
+
+.pokeDetailBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 550px;
+    margin: 50px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    
+    .pokemon-num{
+        line-height: 0px;
+        margin-top: 60px;
+    }
+    h1{
+        line-height: 0px;
+        margin-bottom: 80px;
+    }
+    
+    .shiny-btn{
+        cursor: pointer;
+        color: #aaa;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        padding: 8px;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        word-break: keep-all;
+        width: 180px;
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+    .shiny-btn:hover{
+        color: #000;
+        border: 1px solid #888;
+        transform: translate(3px, 3px);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.45);
+      }
+
+    .official-art{
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        margin-bottom: 40px;
+    }
+    .pokemon-dot{
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        margin-bottom: 60px;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        margin-bottom: 60px;
+        .oneLine{
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            .sub-title{
+                font-size: 0.8rem;
+                background-color: #222;
+                color: #fff;
+                padding: 6px 10px;
+                border-radius: 6px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .backBtnContainer{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        .backBtn{
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 10px;
+            background-color: #e6e6e6;
+        }
+        .backBtn:hover{
+            background-color: #ddd;
+        }
+    }
+
+}

@@ -3,7 +3,7 @@
 /* 세대 버튼 부분 */
 .genBtn{
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   text-align: center;
   margin: 50px 0px;
   flex-wrap: wrap;

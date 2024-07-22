@@ -51,7 +51,7 @@ const PokeDetail = () => {
                     return {
                         ...type,
                         korean_name: koreanType ? koreanType.name : type.type.name
-                    }
+                    };
                 }))
                 const abilities = await Promise.all(response.data.abilities.map(async (ability) => {
                     const abilityResponse = await axios.get(ability.ability.url);
@@ -61,10 +61,19 @@ const PokeDetail = () => {
                       korean_name: koreanAbility ? koreanAbility.name : ability.ability.name
                     };
                 }))
+                const moves = await Promise.all(response.data.moves.map(async (move) => {
+                    const moveResponse = await axios.get(move.move.url);
+                    const koreanMove = moveResponse.data.names.find((name)=>name.language.name === "ko");
+                    return {
+                        ...move,
+                        korean_name: koreanMove ? koreanMove.name : move.move.name
+                    };
+                }))
                 setPokemonData({ ...response.data,
                                  korean_name: korean ? korean.name : response.data.name,
                                  types,
-                                 abilities
+                                 abilities,
+                                 moves
                               });
             }catch(error){
                 console.error("Error Error Error Error Errorrrrr!!!", error)
@@ -165,6 +174,10 @@ const PokeDetail = () => {
                                         <span>X</span>
                                     }          
                             </div>
+
+                            <ul>
+                                {pokemonData.moves.map(m => <li>{m.korean_name}</li>)}
+                            </ul>
 
                         </div>
 

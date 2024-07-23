@@ -64,9 +64,13 @@ const PokeDetail = () => {
                 const moves = await Promise.all(response.data.moves.map(async (move) => {
                     const moveResponse = await axios.get(move.move.url);
                     const koreanMove = moveResponse.data.names.find((name)=>name.language.name === "ko");
+                    // 여기서부터테스트
+                    const powerMove = moveResponse.data.power;
                     return {
                         ...move,
-                        korean_name: koreanMove ? koreanMove.name : move.move.name
+                        korean_name: koreanMove ? koreanMove.name : move.move.name,
+                        // 이거도테스트
+                        power: powerMove ? powerMove : "-"
                     };
                 }))
                 setPokemonData({ ...response.data,
@@ -118,6 +122,7 @@ const PokeDetail = () => {
     // console.log(hiddenAbility);
 
 
+
     return (
         <>
             <Header/>
@@ -165,7 +170,7 @@ const PokeDetail = () => {
                                     }
                             </div>
 
-                            {/* 숨특은 무조건 하나 */}
+                            {/* 숨특은 무조건 하나이기 때문에 */}
                             <div className='oneLine'>
                                 <span className='sub-title'>숨겨진 특성</span>
                                     {hiddenAbility ? 
@@ -175,10 +180,27 @@ const PokeDetail = () => {
                                     }          
                             </div>
 
-                            <ul>
-                                {pokemonData.moves.map(m => <li>{m.korean_name}</li>)}
-                            </ul>
+                        </div>
 
+
+                        {/* 기술 */}
+                        <div className='movesDiv'>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>기술명</td>
+                                        <td>타입</td>
+                                        <td>위력</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {pokemonData.moves.map((m, idx) => <tr key={idx}>
+                                        <td>{m.korean_name}</td>
+                                        <td>타입</td>
+                                        <td>{m.power}</td>
+                                    </tr>)}
+                                </tbody>
+                            </table>
                         </div>
 
 

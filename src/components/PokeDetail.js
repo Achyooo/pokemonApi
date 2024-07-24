@@ -64,13 +64,16 @@ const PokeDetail = () => {
                 const moves = await Promise.all(response.data.moves.map(async (move) => {
                     const moveResponse = await axios.get(move.move.url);
                     const koreanMove = moveResponse.data.names.find((name)=>name.language.name === "ko");
-                    // 여기서부터테스트
                     const powerMove = moveResponse.data.power;
+                    // 여기서부터테스트(오 됐다)
+                    const moveTypeResponse = await axios.get(moveResponse.data.type.url);
+                    const koreanMoveType = moveTypeResponse.data.names.find((name) => name.language.name === "ko");
                     return {
                         ...move,
                         korean_name: koreanMove ? koreanMove.name : move.move.name,
+                        power: powerMove ? powerMove : "-",
                         // 이거도테스트
-                        power: powerMove ? powerMove : "-"
+                        korean_move_type: koreanMoveType ? koreanMoveType.name : "?"
                     };
                 }))
                 setPokemonData({ ...response.data,
@@ -188,15 +191,15 @@ const PokeDetail = () => {
                             <table>
                                 <thead>
                                     <tr>
-                                        <td>기술명</td>
-                                        <td>타입</td>
-                                        <td>위력</td>
+                                        <th>기술명</th>
+                                        <th>타입</th>
+                                        <th>위력</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {pokemonData.moves.map((m, idx) => <tr key={idx}>
                                         <td>{m.korean_name}</td>
-                                        <td>타입</td>
+                                        <td>{m.korean_move_type}</td>
                                         <td>{m.power}</td>
                                     </tr>)}
                                 </tbody>

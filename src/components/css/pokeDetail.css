@@ -93,11 +93,12 @@
             margin-bottom: 10px;
             .sub-title{
                 font-size: 0.8rem;
+                font-weight: bold;
                 background-color: #222;
                 color: #fff;
                 padding: 6px 10px;
                 border-radius: 6px;
-                margin-right: 8px;
+                margin-right: 10px;
             }
         }
     }
@@ -112,15 +113,18 @@
             thead > tr{
                 background-color: #222;
                 color: white;
-                td:nth-child(1){
+                th:nth-child(1){
                     width: 150px;
                     padding: 5px;
+                    border: 1px solid #000;
                 }
-                td:nth-child(2){
+                th:nth-child(2){
                     width: 80px;
+                    border: 1px solid #000;
                 }
-                td:nth-child(3){
+                th:nth-child(3){
                     width: 80px;
+                    border: 1px solid #000;
                 }
             }
 
@@ -131,7 +135,7 @@
                 }
             }
             td{
-                border: 1px solid #000;
+                border: 1px solid #ccc;
             }
         }
     }

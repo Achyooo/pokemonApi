@@ -13,11 +13,20 @@ import "./css/header.css";
 
 
 
-const Header = () => {
+const Header = ({setSearchTerm, setSearchInput}) => {
+
+
+    const resetSearch = () => {
+        setSearchTerm('');
+        setSearchInput('');
+    }
+
 
     return (
         <div className='headerContainer'>
-            <Link to="/?gen=1" className='logoPlace'>
+            <Link to="/?gen=1"
+                  className='logoPlace'
+                  onClick={resetSearch}>
                 <img src={pokeballImg}></img>
                 <span>포켓몬 도감</span>
             </Link>

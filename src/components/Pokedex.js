@@ -208,7 +208,8 @@ const Pokedex = () => {
         <>
 
         {/* 헤더 */}
-        <Header/>
+        <Header setSearchTerm={setSearchTerm}
+                setSearchInput={setSearchInput}/>
 
 
         {/* 검색창 */}
@@ -217,7 +218,7 @@ const Pokedex = () => {
                 <input type="text"
                        value={searchInput} // 입력 필드 상태
                        onChange={onChangeTerm}
-                       placeholder='전 세대 포켓몬 이름 검색'>
+                       placeholder='포켓몬 이름'>
                 </input>
                 <button type='submit'>검색</button>
             </form>

@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 550px;
+    width: 700px;
     margin: 50px auto;
     padding: 10px;
     border: 1px solid #ccc;
@@ -114,16 +114,16 @@
                 background-color: #222;
                 color: white;
                 th:nth-child(1){
-                    width: 150px;
-                    padding: 5px;
+                    width: 190px;
+                    padding: 7px;
                     border: 1px solid #000;
                 }
                 th:nth-child(2){
-                    width: 80px;
+                    width: 90px;
                     border: 1px solid #000;
                 }
                 th:nth-child(3){
-                    width: 80px;
+                    width: 90px;
                     border: 1px solid #000;
                 }
             }
@@ -131,7 +131,7 @@
             tbody > tr{
                 td:nth-child(1){
                     text-align: start;
-                    padding: 5px;
+                    padding: 7px 9px;
                 }
             }
             td{
@@ -149,10 +149,11 @@
             border: none;
             border-radius: 5px;
             padding: 6px 10px;
-            background-color: #e6e6e6;
+            color: #fff;
+            background-color: #aaa;
         }
         .backBtn:hover{
-            background-color: #ddd;
+            background-color: #999;
         }
     }
 

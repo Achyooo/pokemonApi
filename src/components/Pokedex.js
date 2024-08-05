@@ -25,6 +25,10 @@ const Pokedex = () => {
     const [ pokemonData, setPokemonData ] = useState([]); // 포켓몬 데이터(배열)
     const [ loading, setLoading ] = useState(false); // 로딩 상태 추가
 
+    // 검색창 상태
+    const [ searchTerm, setSearchTerm ] = useState(''); // 검색어 상태
+    const [ searchInput, setSearchInput ] = useState(''); // 입력 필드 상태
+
     // 네비게이션 쓸거당
     const navigate = useNavigate();
 
@@ -144,12 +148,20 @@ const Pokedex = () => {
 
     
     // currentGen(세대) 상태가 변경될때마다 데이터 가져오기.
+    // 인데, 만약 검색어가 있다면 모든 세대의 포켓몬 데이터 가져오기.
     useEffect(()=>{
         if(currentGen !== null){
-            const [start, end] = generations[currentGen];
-            fetchPokemonData(start, end);
+            if(searchTerm === '') {
+                // 세대 상태가 변경되면 세대에 따른 데이터 가져오기
+                const [start, end] = generations[currentGen];
+                fetchPokemonData(start, end);
+            } else {
+                // 검색어가 있다면, 모든 세대의 포켓몬 데이터 가져오기
+                const allGenPokemon = [1, 1024];
+                fetchPokemonData(allGenPokemon[0], allGenPokemon[1]);
+            }
         }
-    },[currentGen]);
+    },[currentGen, searchTerm]);
 
 
 
@@ -158,6 +170,8 @@ const Pokedex = () => {
         console.log(gen);
         setCurrentGen(gen);
         setSearchParams({gen});
+        setSearchTerm('');
+        setSearchInput('');
     };
 
 
@@ -170,6 +184,24 @@ const Pokedex = () => {
 
 
 
+    // 검색창 온체인지
+    const onChangeTerm = (e) => {
+        // console.log(e.target.value);
+        setSearchInput(e.target.value);
+    };
+
+
+    // 검색창 필터링 포켓몬
+    const filteredPokemonName = pokemonData.filter((pokemon)=>
+        pokemon.korean_name.includes(searchTerm)
+    );
+
+    // 검색어 제출
+    const onSubmitTerm = (e) => {
+        e.preventDefault();
+        setSearchTerm(searchInput); // 검색어상태를 인풋창상태로 업데이트
+    };
+
 
 
     return (
@@ -179,13 +211,28 @@ const Pokedex = () => {
         <Header/>
 
 
+        {/* 검색창 */}
+        <div className='searchBoxAndBtn'>
+            <form onSubmit={onSubmitTerm}>
+                <input type="text"
+                       value={searchInput} // 입력 필드 상태
+                       onChange={onChangeTerm}
+                       placeholder='전 세대 포켓몬 이름 검색'>
+                </input>
+                <button type='submit'>검색</button>
+            </form>
+        </div>
+        
+
+
 
         {/* 세대 버튼 */}
         <div className='genBtn'>
             {Object.keys(generations).map((gen)=>(
                 <div className='oneBtn' key={gen}>
                     <p onClick={()=>handleGenClick(parseInt(gen))}>
-                        {parseInt(gen) === 10 ? "그 외" : `${gen}세대`}
+                        {/* {parseInt(gen) === 10 ? "그 외" : `${gen}세대`} */}
+                        {gen}세대
                     </p>
                 </div>
             ))}
@@ -203,7 +250,7 @@ const Pokedex = () => {
                     <img src={pokeballDotImg}></img>
                 </div>)
                 :
-                (pokemonData.map((item)=>(
+                (filteredPokemonName.map((item)=>(
                     <div className="pokemon" 
                          key={item.id}
                          onClick={()=>onClickDetail(item.id)}>

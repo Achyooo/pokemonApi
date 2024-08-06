@@ -41,9 +41,8 @@
 
 /* 세대 버튼 부분 */
 .genBtn{
-  width: 1200px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: center;
   margin: 50px auto;
   flex-wrap: wrap;
@@ -78,6 +77,13 @@
   padding: 10px 0px;
   border-top: 1px solid #ccc;
 }
+
+  .no-pokemon-data{
+    margin: 210px 0px;
+    text-align: center;
+    word-break: keep-all;
+    font-size: 1.2rem;
+  }
 
   .pokemon {
     display: flex;

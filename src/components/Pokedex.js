@@ -196,6 +196,9 @@ const Pokedex = () => {
         pokemon.korean_name.includes(searchTerm)
     );
 
+    // console.log(filteredPokemonName, "검색결과 없음");
+
+
     // 검색어 제출
     const onSubmitTerm = (e) => {
         e.preventDefault();
@@ -251,18 +254,24 @@ const Pokedex = () => {
                     <img src={pokeballDotImg}></img>
                 </div>)
                 :
-                (filteredPokemonName.map((item)=>(
-                    <div className="pokemon" 
-                         key={item.id}
-                         onClick={()=>onClickDetail(item.id)}>
-                    
-                        <img src={item.sprites.front_default}
-                             alt={item.korean_name}/>
+                (filteredPokemonName.length === 0 ?
+                    (<div className='no-pokemon-data'>
+                        <p>검색 결과가 없습니다.</p>
+                    </div>)
+                    :
+                    (filteredPokemonName.map((item)=>(
+                        <div className="pokemon" 
+                            key={item.id}
+                            onClick={()=>onClickDetail(item.id)}>
+                        
+                            <img src={item.sprites.front_default}
+                                alt={item.korean_name}/>
 
-                        <p>No.{item.id}</p>
-                        <p>{item.korean_name}</p>
+                            <p>No.{item.id}</p>
+                            <p>{item.korean_name}</p>
 
-                    </div>))
+                        </div>))
+                    )
                 )
             }
 

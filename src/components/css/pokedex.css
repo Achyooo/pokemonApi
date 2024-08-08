@@ -67,6 +67,19 @@
     }
   }
 }
+/* narrowScreen이 true일 때 적용될 스타일, 반응형 */
+.genBtn.narrowScreen {
+  .oneBtn{
+    P{
+      font-size: 0.8rem;
+      width: 40px;
+    }
+  }
+}
+/* narrowerScreen이 true일 때 적용될 스타일, 반응형 */
+.genBtn.narrowerScreen{
+  width: 294px;
+}
 
 
 /* 도감 데이터 부분 */

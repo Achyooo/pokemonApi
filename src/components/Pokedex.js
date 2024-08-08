@@ -29,6 +29,20 @@ const Pokedex = () => {
     const [ searchTerm, setSearchTerm ] = useState(''); // 검색어 상태
     const [ searchInput, setSearchInput ] = useState(''); // 입력 필드 상태
 
+    // 1100px 이하일때 넓이 제한 주기. 반응형 state.
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+    useEffect(()=>{
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    },[])
+
     // 네비게이션 쓸거당
     const navigate = useNavigate();
 
@@ -231,7 +245,10 @@ const Pokedex = () => {
 
 
         {/* 세대 버튼 */}
-        <div className='genBtn'>
+        <div className={`genBtn
+                         ${windowWidth<1100 ? 'narrowScreen' : ''}
+                         ${windowWidth<880 ? 'narrowerScreen' : ''}
+                        `}>
             {Object.keys(generations).map((gen)=>(
                 <div className='oneBtn' key={gen}>
                     <p onClick={()=>handleGenClick(parseInt(gen))}>

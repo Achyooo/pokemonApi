@@ -22,6 +22,19 @@ const PokeDetail = () => {
 
     const [ isShiny, setIsShiny ] = useState(false);
 
+    // 넓이 제한 주기. 반응형 state.
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+    useEffect(()=>{
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    },[]);
 
 
 
@@ -139,7 +152,10 @@ const PokeDetail = () => {
                         <img src={pokeballDotImg}></img>
                     </div>)
                     :
-                    (<div className='pokeDetailBody'>
+                    (<div className={`pokeDetailBody
+                                      ${windowWidth<800 ? 'narrowScreen' : ''}
+                                      ${windowWidth<560 ? 'narrowerScreen' : ''}
+                                    `}>
                         <p className='pokemon-num'>No.{pokemonData.id}</p>
                         <h1>{pokemonData.korean_name}</h1>
                         

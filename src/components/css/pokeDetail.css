@@ -158,3 +158,22 @@
     }
 
 }
+
+/* 800이하 환경 */
+.pokeDetailBody.narrowScreen{
+    width: 380px;
+}
+
+/* 800이하 환경 */
+.pokeDetailBody.narrowerScreen{
+    width: 300px;
+    font-size: 0.9rem;
+    .shiny-btn{
+        font-size: 0.8rem;
+        width: 150px;
+    }
+    .official-art{
+        width: 200px;
+        height: 200px;
+    }
+}

@@ -30,7 +30,7 @@ const Pokedex = () => {
     const [ searchInput, setSearchInput ] = useState(''); // 입력 필드 상태
 
     // 넓이 제한 주기. 반응형 state.
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [ windowWidth, setWindowWidth ] = useState(window.innerWidth)
 
     useEffect(()=>{
         const handleResize = () => {

@@ -23,7 +23,7 @@ const PokeDetail = () => {
     const [ isShiny, setIsShiny ] = useState(false);
 
     // 넓이 제한 주기. 반응형 state.
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [ windowWidth, setWindowWidth ] = useState(window.innerWidth)
 
     useEffect(()=>{
         const handleResize = () => {

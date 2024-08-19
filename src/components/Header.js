@@ -21,13 +21,6 @@ const Header = ({setSearchTerm, setSearchInput}) => {
         setSearchInput('');
     }
 
-    // ※ 지금 문제 ※
-    // searchTerm/searchInput이 검색된 상태에서
-    // Pokedex 페이지에서 헤더 로고를 누르면
-    // 오류 없이 gen1이 소환됨
-    // 다만 PokeDetail 페이지에서 헤더 로고를 누르면
-    // setSearchTerm, setSearchInput은 함수가 아니라는 오류 생김 (근데 이동은 됨;)
-    // 후에 보강 필요
 
 
     return (

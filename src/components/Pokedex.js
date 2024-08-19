@@ -278,11 +278,11 @@ const Pokedex = () => {
                     :
                     (filteredPokemonName.map((item)=>(
                         <div className="pokemon" 
-                            key={item.id}
-                            onClick={()=>onClickDetail(item.id)}>
+                             key={item.id}
+                             onClick={()=>onClickDetail(item.id)}>
                         
                             <img src={item.sprites.front_default}
-                                alt={item.korean_name}/>
+                                 alt={item.korean_name}/>
 
                             <p>No.{item.id}</p>
                             <p>{item.korean_name}</p>

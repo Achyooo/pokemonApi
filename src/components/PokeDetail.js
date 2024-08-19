@@ -22,6 +22,10 @@ const PokeDetail = () => {
 
     const [ isShiny, setIsShiny ] = useState(false);
 
+    // 검색창 상태... 그냥 오류 해결용으로 복사하기로 하다...
+    const [ searchTerm, setSearchTerm ] = useState(''); // 검색어 상태
+    const [ searchInput, setSearchInput ] = useState(''); // 입력 필드 상태
+
     // 넓이 제한 주기. 반응형 state.
     const [ windowWidth, setWindowWidth ] = useState(window.innerWidth)
 
@@ -112,7 +116,9 @@ const PokeDetail = () => {
     if (!pokemonData) {
         return (
             <>
-                <Header />
+                <Header setSearchTerm={setSearchTerm}
+                        setSearchInput={setSearchInput}/>
+
                 <div className='loading'>
                     <img src={pokeballDotImg}></img>
                     <p>Loading...</p>
@@ -141,7 +147,8 @@ const PokeDetail = () => {
 
     return (
         <>
-            <Header/>
+            <Header setSearchTerm={setSearchTerm}
+                    setSearchInput={setSearchInput}/>
 
 
             <div className='pokeDetailContainer'>
